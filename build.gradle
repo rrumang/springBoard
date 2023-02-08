@@ -37,7 +37,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
-    //ModelMapper
+    // ModelMapper
     implementation 'org.modelmapper:modelmapper:3.1.0'
 
     // Querydsl
@@ -53,6 +53,10 @@ dependencies {
 
     // @Valid 관련 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Swagger UI
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 tasks.named('test') {

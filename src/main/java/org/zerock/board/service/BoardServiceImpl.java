@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.zerock.board.domain.Board;
 import org.zerock.board.dto.BoardDTO;
+import org.zerock.board.dto.BoardListReplyCountDTO;
 import org.zerock.board.dto.PageRequestDTO;
 import org.zerock.board.dto.PageResponseDTO;
 import org.zerock.board.repository.BoardRepository;
@@ -79,6 +80,22 @@ public class BoardServiceImpl implements BoardService {
         return PageResponseDTO.<BoardDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+    @Override
+    public PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO) {
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable();
+
+        Page<BoardListReplyCountDTO> result = boardRepository.searchWithReplyCount(types, keyword, pageable);
+
+        return PageResponseDTO.<BoardListReplyCountDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(result.getContent())
                 .total((int)result.getTotalElements())
                 .build();
     }
