@@ -14,7 +14,7 @@
                     Board Modify
                 </div>
                 <div class="card-body">
-                    <form action="@{/board/modify}" method="post" id="f1">
+                    <form th:action="@{/board/modify}" method="post" id="f1">
                         <div class="input-group mb-3">
                             <span class="input-group-text">Bno</span>
                             <input type="text" class="form-control" th:value="${dto.bno}" name="bno" readonly>
