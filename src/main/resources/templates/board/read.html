@@ -48,6 +48,11 @@
                         </div>
                     </div>
                 </div><!--end card body-->
+                <div class="col">
+                    <div class="card" th:if="${dto.fileNames != null && dto.fileNames.size() > 0}">
+                        <img class="card-img-top" th:each="fileName: ${dto.fileNames}" th:src="|/view/${fileName}|">
+                    </div>
+                </div>
             </div>
         </div>
     </div><!--end row-->
@@ -267,7 +272,6 @@
         }
 
         if (data.next) {
-            console.log("뭔데 자꾸 가져와 " + data.next)
             pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end +1}">다음</a></li>`
         }
 

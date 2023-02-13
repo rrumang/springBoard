@@ -58,6 +58,9 @@ public class UpDownController {
 
                     // 이미지 파일의 종류라면
                     if (Files.probeContentType(savePath).startsWith("image")) {
+
+                        image = true;
+
                         File thumbFile = new File(uploadPath, "s_" + uuid + "_" + originalName);
 
                         Thumbnailator.createThumbnail(savePath.toFile(), thumbFile, 200, 200);
@@ -87,6 +90,7 @@ public class UpDownController {
         Resource resource = new FileSystemResource(uploadPath + File.separator + fileName);
 
         String resourceName = resource.getFilename();
+
         HttpHeaders headers = new HttpHeaders();
 
         try {

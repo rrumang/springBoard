@@ -13,7 +13,7 @@ import org.zerock.board.domain.Reply;
 
 @SpringBootTest
 @Log4j2
-public class ReplyRespositoryTests {
+public class ReplyRepositoryTests {
 
     @Autowired
     private ReplyRepository replyRepository;
